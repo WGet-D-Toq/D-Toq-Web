@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Toq - Más Seguro</title>
+    <!-- Enlazamos la hoja de estilos que ya creamos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>D-Toq</h1>
+            <p>Tu remis de confianza, ahora 100% digital y seguro.</p>
+        </header>
+
+        <!-- 
+            Este formulario es la interfaz del usuario. 
+            El ID "viaje-form" es crucial para que script.js lo encuentre.
+        -->
+        <section>
+            <h2>Pedí tu viaje en un toque</h2>
+            <form id="viaje-form">
+                <!-- Los IDs "origen", "destino", "nombre" y "telefono" son necesarios para el script.js -->
+                <input type="text" id="origen" name="origen" placeholder="📍 Ingresa tu ubicación de partida" required>
+                
+                <input type="text" id="destino" name="destino" placeholder="🏁 Ingresa tu destino" required>
+                
+                <input type="text" id="nombre" name="nombre" placeholder="👤 Tu nombre completo" required>
+                
+                <input type="tel" id="telefono" name="telefono" placeholder="📞 Tu teléfono de contacto" required>
+                
+                <!-- El script también necesita este botón para cambiar su estado (ej: "Procesando...") -->
+                <button type="submit" class="button button-primary">Pedir ahora</button>
+            </form>
+            
+            <a href="https://wa.me/5493888514771?text=Hola,%20quisiera%20pedir%20un%20viaje." class="button button-whatsapp" target="_blank">O pedir por WhatsApp</a>
+        </section>
+
+        <section>
+            <h2>¿Cómo funciona?</h2>
+            <p><strong>1. Pide:</strong> Completá el formulario con tus datos.</p>
+            <p><strong>2. Confirmá:</strong> Recibirás un aviso de que tu pedido fue ingresado a la central.</p>
+            <p><strong>3. Viaja:</strong> Nuestro sistema asignará el chofer más cercano. ¡Así de simple y seguro!</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 D-Toq. Un proyecto para innovar y mejorar nuestra sociedad.</p>
+    </footer>
+
+    <!-- 
+        Importante: El script.js se enlaza al final para asegurar 
+        que todo el HTML se haya cargado antes de que el script intente manipularlo.
+    -->
+    <script src="script.js"></script>
+
+</body>
+</
+html>
+
+
