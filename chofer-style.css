@@ -1,0 +1,385 @@
+/* Variables CSS para colores - fáciles de cambiar globalmente */
+:root {
+    --primary-color: #28a745; /* Verde para acciones principales */
+    --secondary-color: #007bff; /* Azul para otras acciones */
+    --background-color: #f8f9fa; /* Fondo claro */
+    --surface-color: #ffffff; /* Color de fondo de tarjetas/elementos */
+    --text-color: #343a40; /* Color de texto principal */
+    --text-light-color: #6c757d; /* Color de texto secundario */
+    --border-color: #dee2e6; /* Color de bordes */
+    --danger-color: #dc3545; /* Rojo para acciones peligrosas/errores */
+    --warning-color: #ffc107; /* Amarillo para advertencias */
+    --info-color: #17a2b8; /* Azul claro para información */
+    --success-color: var(--primary-color); /* Usamos el color primario para éxito */
+}
+
+/* Estilos Generales y Reset Básico */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-tap-highlight-color: transparent; /* Evita el recuadro azul al tocar en iOS/Android */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    -webkit-appearance: none; /* Reset para iOS/Android */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Permite clickear a través cuando está oculto */
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Contenedor Principal de la App */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa el 100% del alto de la ventana */
+    max-width: 600px; /* Ancho máximo para una app móvil */
+    margin: 0 auto; /* Centrar en pantallas más grandes */
+    background-color: var(--background-color);
+    position: relative; /* Para posicionar elementos internos */
+    overflow: hidden; /* Evitar desbordamientos inesperados */
+}
+
+/* Encabezado de la App */
+.app-header {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Fija el header arriba */
+    top: 0;
+    z-index: 50; /* Asegura que esté por encima del contenido */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color); /* Título en color primario */
+}
+
+.user-status {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-light-color);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 5px;
+    color: var(--text-light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+.btn-icon:hover {
+    color: var(--primary-color);
+}
+
+.btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Contenido Principal */
+.main-content {
+    flex-grow: 1; /* Permite que ocupe todo el espacio disponible */
+    padding: 20px;
+    overflow-y: auto; /* Permite scroll solo en el contenido principal */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+}
+
+/* Estilos de Tarjetas (para secciones) */
+.section-card {
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.section-card h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* Botones Generales */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-user-select: none; /* Evita selección de texto al tocar */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--surface-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%); /* Oscurecer un poco */
+}
+
+.btn-secondary {
+    background-color: var(--text-light-color);
+    color: var(--surface-color);
+}
+
+.btn-secondary:hover {
+    background-color: darken(var(--text-light-color), 10%);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--surface-color);
+}
+
+.btn-danger:hover {
+    background-color: darken(var(--danger-color), 10%);
+}
+
+
+/* Estados de Disponibilidad */
+.status-indicator {
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.status-available {
+    background-color: #e6ffe6; /* Verde muy claro */
+    color: var(--primary-color);
+}
+
+.status-unavailable {
+    background-color: #ffe6e6; /* Rojo muy claro */
+    color: var(--danger-color);
+}
+
+.status-intrip {
+    background-color: #fffbe6; /* Amarillo muy claro */
+    color: var(--warning-color);
+}
+
+/* Lista de Viajes */
+.trip-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.trip-list li {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.trip-list li:hover {
+    background-color: #f0f2f5; /* Ligeramente más oscuro al pasar el mouse */
+}
+
+.trip-list .trip-origin,
+.trip-list .trip-destination {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.trip-list .trip-time,
+.trip-list .trip-status {
+    font-size: 0.85rem;
+    color: var(--text-light-color);
+}
+
+.trip-list .trip-status {
+    font-weight: 600;
+}
+
+.loading-item {
+    text-align: center;
+    color: var(--text-light-color);
+    font-style: italic;
+}
+
+
+/* Barra de Navegación Inferior */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--surface-color);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
+    position: sticky; /* Fija la navegación abajo */
+    bottom: 0;
+    z-index: 50;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    color: var(--text-light-color);
+    padding: 5px;
+    border-radius: 5px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb, 40, 167, 69), 0.1); /* Fondo ligero para activo */
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 3px;
+}
+
+/* Vistas Dinámicas (se mostrarán/ocultarán con JS) */
+.view {
+    display: none; /* Por defecto ocultas */
+}
+
+.view.active {
+    display: block; /* La vista activa se muestra */
+}
+
+/* Estilo para el contenedor del mapa Leaflet */
+#mapid {
+    height: 300px; /* Altura del mapa */
+    border-radius: 8px;
+    margin-top: 15px;
+    z-index: 1; /* Asegurar que el mapa no esté cubierto */
+}
+
+/* Pequeño ajuste para convertir el color primario en RGB para el rgba */
+:root {
+    --primary-color-rgb: 40, 167, 69; /* RGB de #28a745 */
+}
+
+/* Media Queries para pantallas pequeñas (siempre es bueno tenerlas) */
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.2rem;
+    }
+    .user-name {
+        font-size: 0.9rem;
+    }
+    .main-content {
+        padding: 15px;
+    }
+    .section-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    .nav-item {
+        font-size: 0.65rem;
+    }
+    .nav-item svg {
+        width: 20px;
+        height: 20px;
+    }
+  }
