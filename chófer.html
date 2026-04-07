@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Chofer - D-Toq</title>
+    
+      <link rel="stylesheet" href="style.css"> 
+      <link rel="stylesheet" href="chofer-styles.css"> 
+    
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Overlay de Carga (para mostrar mientras la app carga datos) -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Cargando D-Toq...</p>
+    </div>
+
+    <!-- Contenedor principal de la aplicación -->
+    <div id="app-container" class="app-container" style="display: none;">
+        <header class="app-header">
+            <h1 id="header-title">Panel de Chofer</h1>
+            <div class="user-status">
+                <span id="chofer-nombre-header" class="user-name"></span>
+                <button id="logout-btn" class="btn-icon logout-icon" aria-label="Cerrar Sesión" style="display: none;">
+                    <!-- Ícono de cerrar sesión, usar un SVG o una fuente de íconos ligera -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Contenido principal dinámico. Aquí se cargará cada "vista" -->
+        <main id="main-content" class="main-content">
+          
+        </main>
+
+        <nav class="bottom-nav">
+            <button id="nav-dashboard" class="nav-item active" aria-label="Dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Inicio</span>
+            </button>
+            <button id="nav-trips" class="nav-item" aria-label="Viajes">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                <span>Viajes</span>
+            </button>
+            <button id="nav-map" class="nav-item" aria-label="Mapa">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                <span>Mapa</span>
+            </button>
+            <button id="nav-profile" class="nav-item" aria-label="Perfil">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Perfil</span>
+            </button>
+        </nav>
+    </div>
+
+   <script src="chofer.js"></script>
+</body>
+</ht
+ml>
